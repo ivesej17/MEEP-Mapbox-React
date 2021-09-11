@@ -11,9 +11,9 @@ class Map extends React.Component{
 	constructor(props){
 		super(props);
 		this.state = {
-			lng: -94.578331, 
-			lat: 39.099724,
-			zoom: 8
+			lng: -94.578331, //Sets initial longitude for map on page load
+			lat: 39.099724, //Sets initial latitude for map on page load
+			zoom: 8 //Increase this zoom level to have the map more zoomed in on page load, or vice-versa
 		}
 	}
 
@@ -21,20 +21,21 @@ class Map extends React.Component{
 	componentDidMount(){
 		const map = new mapboxgl.Map({
 			container: this.mapContainer,
-			style: 'mapbox://styles/mapbox/light-v10', 
+			style: 'mapbox://styles/mapbox/light-v10', //You can swap out this link to change the map style. Check out Mapbox styles on their site
 			center: [this.state.lng, this.state.lat],
 			zoom: this.state.zoom
 		})
 
-		for (const { geometry } of transportationProjects.features){
-            var marker = new mapboxgl.Marker()
-			.setLngLat(geometry.coordinates)
-			.addTo(map);
+			for (const { geometry } of transportationProjects.features){
+            			var marker = new mapboxgl.Marker()
+					     .setLngLat(geometry.coordinates) //Sets latitude and longitude for the marker
+					     .addTo(map); //This function renders the marker on the map at the position set in .setLngLat()
             
-            marker.getElement().addEventListener('click', () => {
-                alert("Clicked");
-            }
-        )}
+	    			//Example code for adding onclick event listener to each marker. 
+            			marker.getElement().addEventListener('click', () => {
+                		alert("Clicked");
+            			}
+        		)}
     }
 
 	render(){
