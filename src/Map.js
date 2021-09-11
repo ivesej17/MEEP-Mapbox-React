@@ -26,16 +26,16 @@ class Map extends React.Component{
 			zoom: this.state.zoom
 		})
 
-			for (const { geometry } of transportationProjects.features){
-            			var marker = new mapboxgl.Marker()
-					     .setLngLat(geometry.coordinates) //Sets latitude and longitude for the marker
-					     .addTo(map); //This function renders the marker on the map at the position set in .setLngLat()
+		for (const { geometry } of transportationProjects.features){
+            		var marker = new mapboxgl.Marker()
+				     .setLngLat(geometry.coordinates) //Sets latitude and longitude for the marker
+				     .addTo(map); //This function renders the marker on the map at the position set in .setLngLat()
             
-	    			//Example code for adding onclick event listener to each marker. 
-            			marker.getElement().addEventListener('click', () => {
-                		alert("Clicked");
-            			}
-        		)}
+	    		//Example code for adding onclick event listener to each marker. 
+            		marker.getElement().addEventListener('click', () => {
+                	alert("Clicked");
+            		}
+        	)}
     }
 
 	render(){
